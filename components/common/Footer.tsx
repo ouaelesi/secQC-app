@@ -7,40 +7,30 @@ import QuebecFlag from "./QuebecFlag";
 export default function FooterSection() {
   return (
     <footer className="relative isolate bg-foreground text-text overflow-hidden">
-    <QuebecFlag />
-      {/* subtle grid */}
-      {/* <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-20"
-        style={{
-          backgroundImage:
-            "linear-gradient(0deg, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
-          backgroundPosition: "-1px -1px",
-        }}
-      /> */}
+      <QuebecFlag />
 
       <div className="relative mx-auto max-w-7xl px-6 py-12 md:px-10 md:py-16 md:pb-7">
         {/* top row */}
         <div className="grid justify-content-between grid-cols-1 gap-10 lg:grid-cols-4">
-          {/* left: brand + newsletter */}
+          {/* left: brand + alerts signup */}
           <div className="lg:col-span-2">
             <div className="mb-6 flex items-center gap-2">
               <Image
                 src="/images/qc.png"
                 width={200}
                 height={50}
-                alt="logo"
+                alt="Logo SécuriQC"
                 className="w-30"
               />
             </div>
 
             <h3 className="text-lg font-semibold">
-              Restez Connecté et Informé
+              Recevez les alertes d’arnaques au Québec
             </h3>
             <p className="mt-2 max-w-xl text-text/80">
-              Abonnez-vous à notre newsletter pour recevoir des conseils IT, des
-              tendances et des stratégies pour optimiser vos performances.
+              Abonnez-vous pour être averti des campagnes actives (SMS, emails,
+              faux logements, faux services) et des nouvelles entrées dans la
+              liste noire.
             </p>
 
             <form action="#" className="mt-6 flex max-w-xl items-center gap-3">
@@ -51,14 +41,14 @@ export default function FooterSection() {
                 id="email"
                 name="email"
                 type="email"
-                placeholder="Email Address"
+                placeholder="votre@email.com"
                 className="w-full rounded-xl bg-white/10 px-4 py-3 text-text placeholder:text-text/60 ring-1 ring-text/15 focus:outline-none focus:ring-2 focus:ring-emerald-400"
               />
               <button
                 type="submit"
                 className="whitespace-nowrap cursor-pointer md:block hidden rounded-xl bg-primary px-5 py-3 font-medium text-black shadow ring-1 ring-emerald-500/40 transition hover:brightness-95"
               >
-                Recevoir les notifications
+                Recevoir les alertes
               </button>
               <button
                 type="submit"
@@ -68,57 +58,81 @@ export default function FooterSection() {
                 <Send className="h-5 w-5" />
               </button>
             </form>
+
+            <p className="mt-3 text-xs text-text/60">
+              Zéro spam. Désinscription en un clic.
+            </p>
           </div>
 
           {/* links */}
           <nav
-            aria-label="Footer navigation"
-            className="grid grid-cols-2 gap-10 lg:col-span-2  "
+            aria-label="Navigation du pied de page"
+            className="grid grid-cols-2 gap-10 lg:col-span-2"
           >
             <div className="md:justify-self-end">
-              <div className="text-sm font-semibold text-text/80">Sections</div>
+              <div className="text-sm font-semibold text-text/80">
+                Ressources
+              </div>
               <ul className="mt-4 space-y-3 text-text/80">
                 <li>
-                  <Link href="/#services" className="hover:text-text">
-                    Services
+                  <Link href="/blacklist" className="hover:text-text">
+                    Liste noire (recherche)
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#work" className="hover:text-text">
-                    Réalisations
+                  <Link href="/verify" className="hover:text-text">
+                    Vérifier une source
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#testimonials" className="hover:text-text">
-                    Témoignages
+                  <Link href="/report" className="hover:text-text">
+                    Signaler une arnaque
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="hover:text-text">
-                    À propos
+                  <Link href="/extension" className="hover:text-text">
+                    Extension Chrome
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blogs" className="hover:text-text">
-                    Blog
+                  <Link href="/docs" className="hover:text-text">
+                    API publique (docs)
                   </Link>
                 </li>
               </ul>
             </div>
+
             <div className="md:justify-self-end">
               <div className="text-sm font-semibold text-text/80">
-                Information
+                Informations
               </div>
               <ul className="mt-4 space-y-3 text-text/80">
                 <li>
-                  <Link href="/#faq" className="hover:text-text">
-                    FAQ&apos;s
+                  <Link href="/about" className="hover:text-text">
+                    À propos & mission
                   </Link>
                 </li>
-
                 <li>
                   <Link href="/contact" className="hover:text-text">
                     Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/privacy" className="hover:text-text">
+                    Politique de confidentialité
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms" className="hover:text-text">
+                    Conditions d’utilisation
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/responsible-reporting"
+                    className="hover:text-text"
+                  >
+                    Signalement responsable
                   </Link>
                 </li>
               </ul>
@@ -131,22 +145,14 @@ export default function FooterSection() {
 
         {/* bottom row */}
         <div className="mt-6 flex flex-col items-center justify-between gap-4 text-text/70 md:flex-row">
-          <p>Copyright © 2025 — All Right Reserved</p>
-          <p className="flex  gap-2 ">
-            Created by{" "}
-            <Link
-              href="https://www.iqubeagency.com/"
-              className="hover:text-text"
-              target="_blank"
-            >
-              <Image
-                src="/iqube.png"
-                width={100}
-                height={100}
-                alt="iqube logo"
-                className="grayscale opacity-80"
-              ></Image>
-            </Link>
+          <p>
+            © {new Date().getFullYear()} SécuriQC — Fabriqué au Québec. Tous
+            droits réservés.
+          </p>
+          <p className="text-xs text-text/60">
+            Avertissement : les informations fournies sont à titre informatif et
+            ne constituent pas un avis légal. En cas d’urgence ou de fraude en
+            cours, contactez le 911.
           </p>
         </div>
       </div>
