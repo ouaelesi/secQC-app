@@ -154,6 +154,7 @@ export default function FooterSection() {
             ne constituent pas un avis légal. En cas d’urgence ou de fraude en
             cours, contactez le 911.
           </p>
+          
         </div>
       </div>
     </footer>
