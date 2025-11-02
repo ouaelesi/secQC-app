@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggeler";
 
 export type NavLink = { label: string; href: string };
 
@@ -25,7 +26,7 @@ export default function Navbar({
     { label: "Signaler", href: "/report" },
     { label: "API & Docs", href: "/docs" },
     { label: "À propos", href: "/about" },
-    { label: "Blog", href: "/blog" },
+    { label: "Contactez nous", href: "/contact" },
   ],
   cta = { label: "Vérifier maintenant", href: "/verify" },
 }: Props) {
@@ -37,13 +38,13 @@ export default function Navbar({
 
   return (
     <header
-      className={`${montserrat.variable} sticky top-0 z-50 w-full bg-foreground text-white`}
+      className={`${montserrat.variable} sticky top-0 z-50 w-full bg-foreground text-text`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6">
         {/* Brand */}
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/images/shield-qc.png" /* place your shield file in /public/images/ */
+            src="/images/qc.png" /* place your shield file in /public/images/ */
             width={36}
             height={36}
             alt="SecuriQC logo"
@@ -57,7 +58,8 @@ export default function Navbar({
 
         {/* Desktop links */}
         <div className="hidden md:flex md:flex-1 md:items-center md:justify-center">
-          <ul className="flex items-center gap-8 text-sm text-white/80">
+          <ul className="flex items-center gap-8 text-sm text-text/80">
+            <ThemeToggle />
             {links.map((l) => {
               const active = isActive(l.href);
               return (
@@ -66,7 +68,7 @@ export default function Navbar({
                     href={l.href}
                     aria-current={active ? "page" : undefined}
                     className={`rounded px-1 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/40 ${
-                      active ? "text-white" : "hover:text-white"
+                      active ? "text-text" : "hover:text-text"
                     }`}
                   >
                     {l.label}
@@ -130,6 +132,7 @@ export default function Navbar({
         } border-t border-white/10 bg-foreground`}
       >
         <ul className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3 text-white/90">
+          <ThemeToggle />
           {links.map((l) => {
             const active = isActive(l.href);
             return (

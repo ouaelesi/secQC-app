@@ -89,47 +89,33 @@ export default function QuickSearchSection() {
   const confidencePct = Math.round((result?.confidence ?? 0) * 100);
 
   return (
-    <section className="relative isolate bg-foreground py-14 text-white">
+    <section className="relative  isolate bg-foreground py-24  text-text">
       {/* subtle grid / glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-80"
-        style={{
-          background:
-            "radial-gradient(1200px 600px at 80% 20%, rgba(0,255,153,0.06), transparent 60%), radial-gradient(800px 400px at 10% 90%, rgba(0,255,153,0.04), transparent 50%)",
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 mix-blend-screen"
-        style={{
-          backgroundImage:
-            "linear-gradient(0deg, rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-          backgroundPosition: "-1px -1px",
-          opacity: 0.25,
-        }}
-      />
 
-      <div className="relative mx-auto max-w-7xl px-6 md:px-10">
+      <div className="relative mx-auto overflow-hidden max-w-7xl px-6 md:px-10">
         {/* Header */}
+
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs ring-1 ring-white/15">
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-card/30 px-3 py-1 text-xs ring-1 ring-text/15">
             <Shield className="h-4 w-4 text-emerald-300" />
             Vérification instantanée — Téléphone, Email, URL
           </div>
           <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">
             Vérifiez avant de faire confiance
           </h2>
-          <p className="mt-3 text-white/80">
+          <p className="mt-3 text-text/80">
             Entrez un numéro, un email ou un lien. Nous renvoyons un niveau de
             risque, la confiance et des conseils pratiques.
           </p>
         </div>
 
         {/* Card */}
-        <div className="mx-auto mt-8 w-full max-w-4xl rounded-2xl bg-white/5 p-4 ring-1 ring-white/10 backdrop-blur md:p-6">
+        <div className="mx-auto mt-8 w-full max-w-4xl  relative overflow-hidden rounded-2xl bg-card/10 p-4 ring-1 ring-text/10 backdrop-blur md:p-6">
           {/* Tabs */}
+          <div
+            className="absolute w-1/2 h-1/2 right-0 -inset-6 rounded-[2.5rem] bg-green-300/30 blur-3xl transition-opacity duration-500"
+            aria-hidden
+          />
           <div className="flex flex-wrap items-center gap-2">
             {TABS.map((t) => (
               <button
@@ -142,8 +128,8 @@ export default function QuickSearchSection() {
                 }}
                 className={`rounded-full px-4 py-2 text-sm transition ${
                   tab === t.key
-                    ? "bg-primary text-black font-semibold"
-                    : "bg-white/10 text-white/90 hover:bg-white/15"
+                    ? "bg-green-400 text-white font-semibold"
+                    : "bg-card/30 text-text/90 hover:bg-card/30"
                 }`}
               >
                 {t.label}
@@ -159,7 +145,7 @@ export default function QuickSearchSection() {
               onChange={(e) => setValue(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleLookup()}
               placeholder={current.placeholder}
-              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/50 outline-none focus:border-emerald-400/50"
+              className="w-full rounded-xl border border-text/20 bg-card/10 px-4 py-3 text-text placeholder-text/50 outline-none focus:border-emerald-400/50"
               aria-label={`Entrer ${current.label.toLowerCase()}`}
             />
             <button
@@ -179,7 +165,7 @@ export default function QuickSearchSection() {
           </div>
 
           {/* Example quick-fill */}
-          <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-white/70">
+          <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-text/70">
             <span className="opacity-80">Essayer&nbsp;:</span>
             {current.examples.map((ex) => (
               <button
@@ -188,7 +174,7 @@ export default function QuickSearchSection() {
                   setValue(ex);
                   handleLookup(ex);
                 }}
-                className="rounded-full bg-white/10 px-3 py-1 hover:bg-white/15"
+                className="rounded-full bg-card/30 px-3 py-1 hover:bg-card/30"
               >
                 {ex}
               </button>
@@ -198,31 +184,35 @@ export default function QuickSearchSection() {
           {/* Result / Error */}
           <div className="mt-4">
             {error && (
-              <div className="rounded-lg bg-red-500/10 p-3 text-sm text-red-200 ring-1 ring-red-400/30">
+              <div className="rounded-lg bg-red-500/10 p-3 text-sm text-red-600 ring-1 ring-red-400/30">
                 {error}
               </div>
             )}
 
             {result && !error && (
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div className="rounded-2xl border border-text/20 bg-card/10 p-4">
                 <div className="flex items-center justify-between gap-4">
                   <div className="space-y-1">
-                    <p className="text-sm text-white/70">Résultat</p>
-                    <h3 className="text-lg font-semibold text-white">
+                    <p className="text-sm text-text/70">Résultat</p>
+                    <h3 className="text-lg font-semibold text-text">
                       {result.type.toUpperCase()} • {result.value}
                     </h3>
                   </div>
                   <div className="flex items-center gap-2">
-                    {result.malicious ? (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-red-500/15 px-3 py-1 text-sm text-red-200 ring-1 ring-red-400/30">
+                    {confidencePct > 50 ? (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-red-500/15 px-3 py-1 text-sm text-red-500 ring-1 ring-red-400/30">
                         <ShieldAlert className="h-4 w-4" /> Risque élevé
                       </span>
+                    ) : confidencePct > 10 ? (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-orange-500/15 px-3 py-1 text-sm text-orange-500 ring-1 ring-orange-400/30">
+                        <ShieldAlert className="h-4 w-4" /> Risque moyenne
+                      </span>
                     ) : result.status === "not_found" ? (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-sm text-white/80 ring-1 ring-white/20">
+                      <span className="inline-flex items-center gap-1 rounded-full bg-card/30 px-3 py-1 text-sm text-text/80 ring-1 ring-text/20">
                         <AlertTriangle className="h-4 w-4" /> Inconnu
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/20 px-3 py-1 text-sm text-emerald-200 ring-1 ring-emerald-400/30">
+                      <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/20 px-3 py-1 text-sm text-emerald-600 ring-1 ring-emerald-400/30">
                         <CheckCircle2 className="h-4 w-4" /> Faible risque
                       </span>
                     )}
@@ -231,16 +221,16 @@ export default function QuickSearchSection() {
 
                 {/* Confidence bar */}
                 <div className="mt-3">
-                  <div className="flex items-center justify-between text-xs text-white/60">
-                    <span>Confiance</span>
+                  <div className="flex items-center justify-between text-xs text-text/60">
+                    <span>Risque</span>
                     <span>{confidencePct}%</span>
                   </div>
-                  <div className="mt-2 h-2 w-full rounded-full bg-white/10">
+                  <div className="mt-2 h-2 w-full rounded-full bg-card/30">
                     <div
                       className={`h-2 rounded-full transition-all ${
-                        confidencePct >= 70
+                        confidencePct >= 50
                           ? "bg-red-400"
-                          : confidencePct >= 40
+                          : confidencePct >= 30
                           ? "bg-yellow-300"
                           : "bg-emerald-400"
                       }`}
@@ -251,7 +241,7 @@ export default function QuickSearchSection() {
 
                 {/* Advice */}
                 {result.advice && (
-                  <p className="mt-3 text-sm text-white/80">{result.advice}</p>
+                  <p className="mt-3 text-sm text-text/80">{result.advice}</p>
                 )}
 
                 {/* Tags / Sources */}
@@ -259,20 +249,20 @@ export default function QuickSearchSection() {
                   {(result.tags ?? []).map((t) => (
                     <span
                       key={t}
-                      className="rounded-full bg-white/10 px-2 py-1 text-xs text-white/80"
+                      className="rounded-full bg-card/30 px-2 py-1 text-xs text-text/80"
                     >
                       #{t}
                     </span>
                   ))}
                   {result.sources && result.sources.length > 0 && (
-                    <span className="ml-auto text-xs text-white/50">
+                    <span className="ml-auto text-xs text-text/50">
                       Sources: {result.sources.map((s) => s.name).join(", ")}
                     </span>
                   )}
                 </div>
 
                 {/* Timestamps */}
-                <div className="mt-2 grid grid-cols-2 gap-2 text-xs text-white/50 md:grid-cols-4">
+                <div className="mt-2 grid grid-cols-2 gap-2 text-xs text-text/50 md:grid-cols-4">
                   <div>
                     Première détection:{" "}
                     {result.first_seen
@@ -294,7 +284,7 @@ export default function QuickSearchSection() {
         </div>
 
         {/* Small reassurance line */}
-        <p className="mx-auto mt-4 max-w-3xl text-center text-xs text-white/60">
+        <p className="mx-auto mt-4 max-w-3xl text-center text-xs text-text/60">
           Nous ne partageons jamais vos informations personnelles. Les résultats
           sont fournis avec un niveau de confiance et des sources pour la
           transparence.

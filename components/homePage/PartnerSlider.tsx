@@ -1,5 +1,6 @@
 // PartnersMarquee.jsx
 "use client";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -58,48 +59,14 @@ const DEFAULT_PARTNERS: Partner[] = [
 ];
 
 const WHITE_PARTNERS: Partner[] = [
-  { name: "ARPC", src: "/partners/quebec.png", href: "#" },
-  {
-    name: "Aten",
-    src: "/partners/Canada.png",
-    href: "#",
-  },
-  { name: "ARPC", src: "/partners/quebec.png", href: "#" },
-  {
-    name: "Aten",
-    src: "/partners/Canada.png",
-    href: "#",
-  },
-  { name: "ARPC", src: "/partners/quebec.png", href: "#" },
-  {
-    name: "Aten",
-    src: "/partners/Canada.png",
-    href: "#",
-  },
-  { name: "ARPC", src: "/partners/quebec.png", href: "#" },
-  {
-    name: "Aten",
-    src: "/partners/Canada.png",
-    href: "#",
-  },
-  { name: "ARPC", src: "/partners/quebec.png", href: "#" },
-  {
-    name: "Aten",
-    src: "/partners/Canada.png",
-    href: "#",
-  },
-  { name: "ARPC", src: "/partners/quebec.png", href: "#" },
-  {
-    name: "Aten",
-    src: "/partners/Canada.png",
-    href: "#",
-  },
-  { name: "ARPC", src: "/partners/quebec.png", href: "#" },
-  {
-    name: "Aten",
-    src: "/partners/Canada.png",
-    href: "#",
-  },
+  { name: "ARPC", src: "/images/canada_black.png", href: "#" },
+  { name: "ARPC", src: "/images/quebec_black.png", href: "#", isSmall: true },
+  { name: "ARPC", src: "/images/canada_black.png", href: "#" },
+  { name: "ARPC", src: "/images/quebec_black.png", href: "#", isSmall: true },
+  { name: "ARPC", src: "/images/canada_black.png", href: "#" },
+  { name: "ARPC", src: "/images/quebec_black.png", href: "#", isSmall: true },
+  { name: "ARPC", src: "/images/canada_black.png", href: "#" },
+  { name: "ARPC", src: "/images/quebec_black.png", href: "#", isSmall: true },
 ];
 
 export default function PartnersSlider({
@@ -109,13 +76,14 @@ export default function PartnersSlider({
   className = "",
   section = "Hero",
 }) {
-  partners = section === "Hero" ? WHITE_PARTNERS : partners;
+  const { setTheme, resolvedTheme } = useTheme();
+  partners = resolvedTheme === "dark" ? WHITE_PARTNERS : partners;
   const track = [...partners, ...partners];
   const animName = direction === "left" ? "partnersLeft" : "partnersRight";
 
   return (
     <div
-      className={`py-5  relative overflow-hidden ${className}  ${
+      className={`py-5 relative overflow-hidden ${className}  ${
         section == "Hero" ? "md:w-9/10" : "md:w-full mx-auto"
       }`}
       aria-label="Partenaires"

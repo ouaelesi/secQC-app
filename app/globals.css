@@ -2,22 +2,32 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #001842;
-  --primary: #7eaeff;
+  --foreground: #000919;
+  --primary: #3076ef;
+  --text: #e5e7eb;   
+  --card : rgb(255, 255, 255) ; 
+ 
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
+  --color-text: var(--text);
+    --color-card: var(--card);
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ffffff;
-    --foreground: #001842;
-    --primary: #7eaeff
-  }
+
+
+/* Dark mode */
+.dark {
+  --background: #001842;   /* dark background */
+  --foreground: #ffffff;   /* UI elements / surfaces */
+    --text : #1a1a1a; 
+   --primary: #7eaeff;
+    --card : #c3c3c3 ; 
+    color-scheme: dark; 
 }
 
 html {

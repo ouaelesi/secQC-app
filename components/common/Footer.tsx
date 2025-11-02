@@ -2,10 +2,12 @@ import { Send } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import QuebecFlag from "./QuebecFlag";
 
 export default function FooterSection() {
   return (
-    <footer className="relative isolate bg-foreground text-white">
+    <footer className="relative isolate bg-foreground text-text overflow-hidden">
+    <QuebecFlag />
       {/* subtle grid */}
       {/* <div
         aria-hidden
@@ -17,10 +19,6 @@ export default function FooterSection() {
           backgroundPosition: "-1px -1px",
         }}
       /> */}
-      <div
-        className="absolute w-1/2 h-1/2 left-20 -inset-6 rounded-[2.5rem] bg-emerald-400/10 blur-3xl transition-opacity duration-500"
-        aria-hidden
-      />
 
       <div className="relative mx-auto max-w-7xl px-6 py-12 md:px-10 md:py-16 md:pb-7">
         {/* top row */}
@@ -29,7 +27,7 @@ export default function FooterSection() {
           <div className="lg:col-span-2">
             <div className="mb-6 flex items-center gap-2">
               <Image
-                src="/images/servsi_logo.svg"
+                src="/images/qc.png"
                 width={200}
                 height={50}
                 alt="logo"
@@ -40,7 +38,7 @@ export default function FooterSection() {
             <h3 className="text-lg font-semibold">
               Restez Connecté et Informé
             </h3>
-            <p className="mt-2 max-w-xl text-white/80">
+            <p className="mt-2 max-w-xl text-text/80">
               Abonnez-vous à notre newsletter pour recevoir des conseils IT, des
               tendances et des stratégies pour optimiser vos performances.
             </p>
@@ -54,7 +52,7 @@ export default function FooterSection() {
                 name="email"
                 type="email"
                 placeholder="Email Address"
-                className="w-full rounded-xl bg-white/10 px-4 py-3 text-white placeholder:text-white/60 ring-1 ring-white/15 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                className="w-full rounded-xl bg-white/10 px-4 py-3 text-text placeholder:text-text/60 ring-1 ring-text/15 focus:outline-none focus:ring-2 focus:ring-emerald-400"
               />
               <button
                 type="submit"
@@ -78,50 +76,48 @@ export default function FooterSection() {
             className="grid grid-cols-2 gap-10 lg:col-span-2  "
           >
             <div className="md:justify-self-end">
-              <div className="text-sm font-semibold text-white/80">
-                Sections
-              </div>
-              <ul className="mt-4 space-y-3 text-white/80">
+              <div className="text-sm font-semibold text-text/80">Sections</div>
+              <ul className="mt-4 space-y-3 text-text/80">
                 <li>
-                  <Link href="/#services" className="hover:text-white">
+                  <Link href="/#services" className="hover:text-text">
                     Services
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#work" className="hover:text-white">
+                  <Link href="/#work" className="hover:text-text">
                     Réalisations
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#testimonials" className="hover:text-white">
+                  <Link href="/#testimonials" className="hover:text-text">
                     Témoignages
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="hover:text-white">
+                  <Link href="/about" className="hover:text-text">
                     À propos
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blogs" className="hover:text-white">
+                  <Link href="/blogs" className="hover:text-text">
                     Blog
                   </Link>
                 </li>
               </ul>
             </div>
             <div className="md:justify-self-end">
-              <div className="text-sm font-semibold text-white/80">
+              <div className="text-sm font-semibold text-text/80">
                 Information
               </div>
-              <ul className="mt-4 space-y-3 text-white/80">
+              <ul className="mt-4 space-y-3 text-text/80">
                 <li>
-                  <Link href="/#faq" className="hover:text-white">
+                  <Link href="/#faq" className="hover:text-text">
                     FAQ&apos;s
                   </Link>
                 </li>
 
                 <li>
-                  <Link href="/contact" className="hover:text-white">
+                  <Link href="/contact" className="hover:text-text">
                     Contact
                   </Link>
                 </li>
@@ -134,13 +130,13 @@ export default function FooterSection() {
         <hr className="mt-10 border-white/10" />
 
         {/* bottom row */}
-        <div className="mt-6 flex flex-col items-center justify-between gap-4 text-white/70 md:flex-row">
+        <div className="mt-6 flex flex-col items-center justify-between gap-4 text-text/70 md:flex-row">
           <p>Copyright © 2025 — All Right Reserved</p>
           <p className="flex  gap-2 ">
             Created by{" "}
             <Link
               href="https://www.iqubeagency.com/"
-              className="hover:text-white"
+              className="hover:text-text"
               target="_blank"
             >
               <Image

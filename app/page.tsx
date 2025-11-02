@@ -2,8 +2,10 @@ import Image from "next/image";
 
 import { Montserrat } from "next/font/google";
 import HeroSection from "@/components/homePage/Header";
-import QuickSearchWidget from "@/components/homePage/QuickSearchWidget";
+import QuickSearchSection from "@/components/homePage/QuickSearchWidget";
 import ServicesAudienceSection from "@/components/homePage/ServicesAudienceSection";
+import PartnersSlider from "@/components/homePage/PartnerSlider";
+import PartnersSection from "@/components/homePage/PartnersSection";
 
 const montserrat = Montserrat({
   weight: ["300", "400", "500", "700"], // Example weights
@@ -17,7 +19,8 @@ export default function Home() {
     <div className={montserrat.className}>
       <HeroSection />
       <ServicesAudienceSection />
-      <QuickSearchWidget></QuickSearchWidget>
+      <QuickSearchSection></QuickSearchSection>
+      <PartnersSection />
     </div>
   );
 }
